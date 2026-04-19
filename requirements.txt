@@ -1,0 +1,12 @@
+# Thư viện lõi cho AI và Xử lý ảnh
+tensorflow>=2.16.1
+pillow>=10.0.0
+numpy>=1.26.0
+
+# Thư viện cho Backend Web
+flask>=3.0.0
+flask-cors>=4.0.0
+
+# Thư viện hỗ trợ và đánh giá
+tqdm>=4.66.0
+scikit-learn>=1.3.0

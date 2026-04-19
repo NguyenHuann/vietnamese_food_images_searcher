@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Ẩm Thực Việt Nam - Image Retrieval</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+      <h1 class="text-3xl font-bold text-center text-blue-600 mb-8">
+        Tra Cứu Món Ăn Việt Nam Bằng AI
+      </h1>
+
+      <div class="bg-white p-6 rounded-lg shadow-md mb-8 text-center">
+        <input
+          type="file"
+          id="imageInput"
+          accept="image/*"
+          class="hidden"
+          onchange="previewImage(event)"
+        />
+        <label
+          for="imageInput"
+          class="cursor-pointer bg-blue-50 text-blue-600 border border-blue-200 px-6 py-3 rounded-lg font-semibold hover:bg-blue-100 transition inline-block mb-4"
+        >
+          📸 Chọn ảnh cần tìm
+        </label>
+
+        <div id="previewContainer" class="hidden mt-4">
+          <p class="text-gray-500 mb-2">Ảnh bạn vừa tải lên:</p>
+          <img
+            id="preview"
+            src=""
+            alt="Preview"
+            class="max-h-64 mx-auto rounded-lg shadow"
+          />
+          <button
+            onclick="searchImage()"
+            class="mt-4 bg-green-500 text-white px-8 py-2 rounded-lg font-bold hover:bg-green-600 shadow-lg hover:shadow-xl transition"
+          >
+            🔍 Tìm Kiếm Ngay
+          </button>
+        </div>
+
+        <div
+          id="loading"
+          class="hidden mt-4 text-blue-500 font-bold animate-pulse"
+        >
+          ⏳ AI đang phân tích không gian Vector...
+        </div>
+      </div>
+
+      <div id="resultsArea" class="hidden">
+        <h2 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">
+          Top 5 Bức Ảnh Giống Nhất Trong Hệ Thống:
+        </h2>
+        <div
+          id="resultsGrid"
+          class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4"
+        ></div>
+      </div>
+    </div>
+
+    <script>
+      let selectedFile = null;
+
+      // Chức năng hiển thị trước ảnh (Preview)
+      function previewImage(event) {
+        selectedFile = event.target.files[0];
+        if (selectedFile) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("preview").src = e.target.result;
+            document
+              .getElementById("previewContainer")
+              .classList.remove("hidden");
+            document.getElementById("resultsArea").classList.add("hidden");
+          };
+          reader.readAsDataURL(selectedFile);
+        }
+      }
+
+      // Chức năng gọi API Backend
+      async function searchImage() {
+        if (!selectedFile) return;
+
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+
+        document.getElementById("loading").classList.remove("hidden");
+        document.getElementById("resultsArea").classList.add("hidden");
+
+        try {
+          const response = await fetch("/search", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await response.json();
+          document.getElementById("loading").classList.add("hidden");
+
+          if (data.error) {
+            alert("Lỗi: " + data.error);
+            return;
+          }
+
+          renderResults(data.results);
+        } catch (error) {
+          alert("Lỗi kết nối tới Server!");
+          document.getElementById("loading").classList.add("hidden");
+        }
+      }
+
+      // Hiển thị kết quả ra Web
+      function renderResults(results) {
+        const grid = document.getElementById("resultsGrid");
+        grid.innerHTML = ""; // Xóa kết quả cũ
+
+        results.forEach((item, index) => {
+          const similarityPercent = (item.similarity * 100).toFixed(1);
+
+          // Card kết quả (Top 1 sẽ có viền vàng nổi bật)
+          const cardClass =
+            index === 0
+              ? "bg-yellow-50 border-2 border-yellow-400 rounded-lg overflow-hidden shadow-lg transform scale-105"
+              : "bg-white rounded-lg overflow-hidden shadow border border-gray-200";
+
+          const badge =
+            index === 0
+              ? `<div class="bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 absolute top-0 right-0 rounded-bl-lg">TOP 1 MATCH</div>`
+              : "";
+
+          grid.innerHTML += `
+                    <div class="${cardClass} relative flex flex-col">
+                        ${badge}
+                        <img src="${item.image_url}" class="w-full h-32 object-cover" alt="Food">
+                        <div class="p-3 text-center flex-grow flex flex-col justify-between">
+                            <h3 class="font-bold text-gray-800 text-sm mb-1">${item.dish_name}</h3>
+                            <p class="text-xs font-semibold text-green-600 bg-green-100 rounded-full py-1">
+                                Độ giống: ${similarityPercent}%
+                            </p>
+                        </div>
+                    </div>
+                `;
+        });
+
+        document.getElementById("resultsArea").classList.remove("hidden");
+      }
+    </script>
+  </body>
+</html>
