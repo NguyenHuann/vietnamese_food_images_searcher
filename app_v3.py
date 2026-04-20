@@ -55,65 +55,55 @@ def search():
     if "file" not in request.files:
         return jsonify({"error": "Không tìm thấy file"}), 400
 
+    # Lấy tham số K từ form, mặc định là 5 nếu không có
+    k_param = request.form.get("k", 5)
+    try:
+        K = int(k_param)
+    except ValueError:
+        K = 5
+
     file = request.files["file"]
-    img_bytes = file.read()  # Đọc file ảnh dưới dạng byte
+    img_bytes = file.read()
 
     def generate():
         try:
-            # --- BƯỚC 1: TIỀN XỬ LÝ ---
-            yield json.dumps({"step": "1. Đang nạp và làm sạch ảnh..."}) + "\n"
-            time.sleep(0.5)  # Giả lập chờ để người dùng kịp đọc
-
+            yield json.dumps({"step": "1. Đang xử lý ảnh..."}) + "\n"
             img = Image.open(io.BytesIO(img_bytes)).convert("RGB")
-            img_resized = img.resize((224, 224))  # Đổi thành 224 nếu dùng v5
+            img_resized = img.resize((224, 224))
             x = keras_image.img_to_array(img_resized)
             x = np.expand_dims(x, axis=0)
 
-            # --- BƯỚC 2: TRÍCH XUẤT ĐẶC TRƯNG ---
-            yield json.dumps({"step": "2. AI đang quét đặc trưng món ăn..."}) + "\n"
-            time.sleep(0.5)
+            yield json.dumps({"step": "2. AI đang trích xuất đặc trưng..."}) + "\n"
             query_vector = model.predict(x, verbose=0)[0]
 
-            # --- BƯỚC 3: TÌM KIẾM CSDL ---
-            yield json.dumps({"step": "3. Đang so sánh với 10.000 ảnh trong CSDL..."}) + "\n"
-            time.sleep(0.5)
+            yield json.dumps({"step": f"3. Đang tìm Top {K} ảnh tương đồng..."}) + "\n"
             similarities = np.dot(db_vectors, query_vector)
 
-            top_5_indices = np.argsort(similarities)[::-1][:5]
-            top_5_sims = similarities[top_5_indices]
+            # Sửa chỗ này: Lấy K thay vì số 5 cố định
+            top_k_indices = np.argsort(similarities)[::-1][:K]
+            top_k_sims = similarities[top_k_indices]
 
             # Temperature Scaling
             TEMPERATURE = 0.5
-            exp_sims = np.exp(top_5_sims / TEMPERATURE)
+            exp_sims = np.exp(top_k_sims / TEMPERATURE)
             confidence_scores = exp_sims / np.sum(exp_sims) * 100
-            mon_nuoc_group = ["pho_bo", "bun_bo_hue", "bun_thang", "bun_rieu", "hu_tieu"]
 
             results = []
-            for i, idx in enumerate(top_5_indices):
+            for i, idx in enumerate(top_k_indices):
                 path = db_paths[idx]
                 raw_folder = path.split("/")[0]
                 dish_name = DISH_VN_NAMES.get(raw_folder, raw_folder.replace("_", " ").title())
 
-                warning_msg = ""
-                if i == 0 and raw_folder in mon_nuoc_group:
-                    diff = confidence_scores[0] - confidence_scores[1]
-                    if diff < 15.0:
-                        warning_msg = "⚠️ Ảnh hơi mờ/khó đoán, có thể nhầm với món nước khác!"
-
                 results.append({
                     "dish_name": dish_name,
                     "similarity": float(confidence_scores[i]),
-                    "warning": warning_msg,
                     "image_url": f"/dataset/{path}"
                 })
 
-            # --- BƯỚC 4: HOÀN TẤT VÀ TRẢ KẾT QUẢ ---
             yield json.dumps({"step": "Hoàn tất!", "results": results}) + "\n"
-
         except Exception as e:
             yield json.dumps({"error": str(e)}) + "\n"
 
-    # Trả về Response dưới dạng NDJSON (Newline Delimited JSON)
     return Response(generate(), mimetype='application/x-ndjson')
 
 
