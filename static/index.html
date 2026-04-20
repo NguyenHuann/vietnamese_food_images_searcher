@@ -42,14 +42,12 @@
             🔍 Tìm Kiếm Ngay
           </button>
         </div>
-
-        <div
-          id="loading"
-          class="hidden mt-4 text-blue-500 font-bold animate-pulse"
-        >
-          ⏳ AI đang phân tích không gian Vector...
-        </div>
-      </div>
+          <div id="loading" class="hidden mt-4 text-blue-600 font-bold bg-blue-50 p-3 rounded-lg border border-blue-200">
+            <div class="flex items-center justify-center gap-2">
+              <svg class="animate-spin h-5 w-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+              <span id="loadingText" class="animate-pulse">⏳ Đang kết nối tới Server...</span>
+            </div>
+          </div>
 
       <div id="resultsArea" class="hidden">
         <h2 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">
@@ -82,35 +80,67 @@
       }
 
       // Chức năng gọi API Backend
-      async function searchImage() {
-        if (!selectedFile) return;
+async function searchImage() {
+            if (!selectedFile) return;
 
-        const formData = new FormData();
-        formData.append("file", selectedFile);
+            const formData = new FormData();
+            formData.append("file", selectedFile);
 
-        document.getElementById("loading").classList.remove("hidden");
-        document.getElementById("resultsArea").classList.add("hidden");
+            const loadingDiv = document.getElementById('loading');
+            const loadingText = document.getElementById('loadingText');
+            const resultsArea = document.getElementById('resultsArea');
 
-        try {
-          const response = await fetch("/search", {
-            method: "POST",
-            body: formData,
-          });
+            loadingDiv.classList.remove('hidden');
+            resultsArea.classList.add('hidden');
+            loadingText.innerText = "⏳ Đang tải ảnh lên Server...";
 
-          const data = await response.json();
-          document.getElementById("loading").classList.add("hidden");
+            try {
+                const response = await fetch('/search', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                // Mở luồng đọc dữ liệu trả về (Stream)
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
 
-          if (data.error) {
-            alert("Lỗi: " + data.error);
-            return;
-          }
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break; // Luồng kết thúc
+                    
+                    // Giải mã luồng byte thành chuỗi
+                    const textChunk = decoder.decode(value, { stream: true });
+                    
+                    // Cắt các chuỗi JSON bằng dấu xuống dòng (phòng trường hợp 2 dòng đến cùng lúc)
+                    const lines = textChunk.split("\n").filter(line => line.trim() !== "");
+                    
+                    for (let line of lines) {
+                        const data = JSON.parse(line);
+                        
+                        if (data.error) {
+                            alert("Lỗi: " + data.error);
+                            loadingDiv.classList.add('hidden');
+                            return;
+                        }
 
-          renderResults(data.results);
-        } catch (error) {
-          alert("Lỗi kết nối tới Server!");
-          document.getElementById("loading").classList.add("hidden");
+                        // Nếu server báo Cập nhật bước
+                        if (data.step && !data.results) {
+                            loadingText.innerText = data.step;
+                        }
+
+                        // Nếu server trả về Kết quả cuối cùng
+                        if (data.results) {
+                            renderResults(data.results);
+                            loadingDiv.classList.add('hidden');
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error(error);
+                alert("Lỗi kết nối tới Server!");
+                loadingDiv.classList.add('hidden');
+            }
         }
-      }
 
       // Hiển thị kết quả ra Web
       function renderResults(results) {

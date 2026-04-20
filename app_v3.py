@@ -1,4 +1,8 @@
 import os
+import io
+import json
+import time
+from flask import Response
 import pickle
 import numpy as np
 from flask import Flask, request, jsonify, send_from_directory
@@ -52,39 +56,65 @@ def search():
         return jsonify({"error": "Không tìm thấy file"}), 400
 
     file = request.files["file"]
-    try:
-        # Đọc ảnh người dùng tải lên
-        img = Image.open(file).convert("RGB")
-        # đầu vào cũ 160,160
-        img_resized = img.resize((224, 224))
-        x = keras_image.img_to_array(img_resized)
-        x = np.expand_dims(x, axis=0)
+    img_bytes = file.read()  # Đọc file ảnh dưới dạng byte
 
-        # Trích xuất vector cho ảnh tìm kiếm
-        query_vector = model.predict(x, verbose=0)[0]
+    def generate():
+        try:
+            # --- BƯỚC 1: TIỀN XỬ LÝ ---
+            yield json.dumps({"step": "1. Đang nạp và làm sạch ảnh..."}) + "\n"
+            time.sleep(0.5)  # Giả lập chờ để người dùng kịp đọc
 
-        # Thuật toán Tra cứu: Tính Cosine Similarity (Dot Product vì đã L2 Normalize)
-        similarities = np.dot(db_vectors, query_vector)
+            img = Image.open(io.BytesIO(img_bytes)).convert("RGB")
+            img_resized = img.resize((224, 224))  # Đổi thành 224 nếu dùng v5
+            x = keras_image.img_to_array(img_resized)
+            x = np.expand_dims(x, axis=0)
 
-        # Lấy Top 5 ảnh có độ tương đồng cao nhất
-        top_5_indices = np.argsort(similarities)[::-1][:50]
+            # --- BƯỚC 2: TRÍCH XUẤT ĐẶC TRƯNG ---
+            yield json.dumps({"step": "2. AI đang quét đặc trưng món ăn..."}) + "\n"
+            time.sleep(0.5)
+            query_vector = model.predict(x, verbose=0)[0]
 
-        results = []
-        for idx in top_5_indices:
-            path = db_paths[idx]
-            raw_folder = path.split("/")[0]  # Lấy tên thư mục
-            dish_name = DISH_VN_NAMES.get(raw_folder, raw_folder.replace("_", " ").title())
+            # --- BƯỚC 3: TÌM KIẾM CSDL ---
+            yield json.dumps({"step": "3. Đang so sánh với 10.000 ảnh trong CSDL..."}) + "\n"
+            time.sleep(0.5)
+            similarities = np.dot(db_vectors, query_vector)
 
-            results.append({
-                "dish_name": dish_name,
-                "similarity": float(similarities[idx]),
-                "image_url": f"/dataset/{path}"
-            })
+            top_5_indices = np.argsort(similarities)[::-1][:5]
+            top_5_sims = similarities[top_5_indices]
 
-        return jsonify({"results": results})
+            # Temperature Scaling
+            TEMPERATURE = 0.5
+            exp_sims = np.exp(top_5_sims / TEMPERATURE)
+            confidence_scores = exp_sims / np.sum(exp_sims) * 100
+            mon_nuoc_group = ["pho_bo", "bun_bo_hue", "bun_thang", "bun_rieu", "hu_tieu"]
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+            results = []
+            for i, idx in enumerate(top_5_indices):
+                path = db_paths[idx]
+                raw_folder = path.split("/")[0]
+                dish_name = DISH_VN_NAMES.get(raw_folder, raw_folder.replace("_", " ").title())
+
+                warning_msg = ""
+                if i == 0 and raw_folder in mon_nuoc_group:
+                    diff = confidence_scores[0] - confidence_scores[1]
+                    if diff < 15.0:
+                        warning_msg = "⚠️ Ảnh hơi mờ/khó đoán, có thể nhầm với món nước khác!"
+
+                results.append({
+                    "dish_name": dish_name,
+                    "similarity": float(confidence_scores[i]),
+                    "warning": warning_msg,
+                    "image_url": f"/dataset/{path}"
+                })
+
+            # --- BƯỚC 4: HOÀN TẤT VÀ TRẢ KẾT QUẢ ---
+            yield json.dumps({"step": "Hoàn tất!", "results": results}) + "\n"
+
+        except Exception as e:
+            yield json.dumps({"error": str(e)}) + "\n"
+
+    # Trả về Response dưới dạng NDJSON (Newline Delimited JSON)
+    return Response(generate(), mimetype='application/x-ndjson')
 
 
 if __name__ == "__main__":
