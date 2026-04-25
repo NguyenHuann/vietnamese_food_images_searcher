@@ -10,7 +10,11 @@ MODEL_PATH = "vietnamese_food_feature_extractor_v3.keras"
 DATASET_DIR = "./dataset"  # Thư mục chứa ảnh gốc của bạn
 
 print("1. Đang tải mô hình...")
-model = load_model(MODEL_PATH, compile=False)
+model = load_model(
+    "vietnamese_food_extractor_advanced.keras",
+    compile=False,
+    custom_objects={'GeMPooling': GeMPooling} # <--- Thêm dòng này vào là xong!
+)
 
 vectors = []
 paths = []

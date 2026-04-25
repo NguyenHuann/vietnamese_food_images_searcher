@@ -21,7 +21,11 @@ DATASET_DIR = os.path.join(BASE_DIR, "dataset")
 
 # 1. Tải Model và Database Vector lên RAM
 print("Đang khởi động Server và nạp AI...")
-model = load_model("vietnamese_food_feature_extractor_v3.keras", compile=False)
+model = load_model(
+    "vietnamese_food_extractor_advanced.keras",
+    compile=False,
+    custom_objects={'GeMPooling': GeMPooling} # <--- Thêm dòng này vào là xong!
+)
 
 with open("vectors_v3.pkl", "rb") as f:
     db_vectors = pickle.load(f)
