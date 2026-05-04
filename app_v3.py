@@ -141,26 +141,53 @@ def search():
             yield json.dumps({"step": "2. AI đang trích xuất đặc trưng..."}) + "\n"
             query_vector = model.predict(x, verbose=0)[0]
 
-            # Bước 3: Thuật toán k-NN và Tính toán độ tương đồng
-            yield json.dumps({"step": "3. Đang tìm và tiến hành bầu chọn (k-NN)..."}) + "\n"
-            similarities = np.dot(db_vectors, query_vector)
-            top_k_indices = np.argsort(similarities)[::-1][:K]
-            top_k_sims = similarities[top_k_indices]
+            # ==========================================
+            # BƯỚC 3: GIAI ĐOẠN RERANKING (AVERAGE QUERY EXPANSION - AQE)
+            # ==========================================
+            yield json.dumps({"step": "3. Đang phân tích sơ bộ và Reranking..."}) + "\n"
 
-            # --- CƠ CHẾ BẦU CHỌN (MAJORITY VOTING) ---
+            # --- Lượt 1: Tìm kiếm cơ bản ---
+            base_similarities = np.dot(db_vectors, query_vector)
+
+            # Lấy Top 3 ảnh đáng tin cậy nhất để làm thông tin trợ giúp (Expansion)
+            AQE_K = 3
+            top_aqe_indices = np.argsort(base_similarities)[::-1][:AQE_K]
+
+            # --- Lượt 2: Trộn Vector (Tạo Vector Lai) ---
+            alpha = 0.5  # Trọng số niềm tin. Không nên để quá 1.0 tránh làm mất bản chất ảnh gốc
+            expanded_vector = query_vector.copy()
+
+            for idx in top_aqe_indices:
+                # Chỉ vay mượn thông tin nếu ảnh đó thực sự giống (Similarity > 0.8)
+                # Để tránh hiện tượng Semantic Drift (kéo rác vào vector)
+                if base_similarities[idx] > 0.8:
+                    expanded_vector += alpha * db_vectors[idx]
+
+            # Chuẩn hóa lại Vector Lai về bề mặt hình cầu (Unit Normalization L2)
+            expanded_vector = expanded_vector / np.linalg.norm(expanded_vector)
+
+            # --- Lượt 3: Tìm kiếm chốt sổ bằng Vector Lai ---
+            yield json.dumps({"step": "4. Đang tiến hành bầu chọn (k-NN)..."}) + "\n"
+            final_similarities = np.dot(db_vectors, expanded_vector)
+
+            # Lấy Top K cuối cùng
+            top_k_indices = np.argsort(final_similarities)[::-1][:K]
+            top_k_sims = final_similarities[top_k_indices]
+
+            # ==========================================
+            # BƯỚC 4: CƠ CHẾ BẦU CHỌN (MAJORITY VOTING)
+            # ==========================================
             vote_count = min(10, K)
             vote_labels = [db_paths[idx].split("/")[0] for idx in top_k_indices[:vote_count]]
 
-            # Đếm số phiếu
             counter = Counter(vote_labels)
             majority_folder, majority_votes = counter.most_common(1)[0]
 
-            # Xử lý tên món: Lấy từ từ điển, nếu không có thì tự động format lại thư mục gốc
             predicted_dish = DISH_VN_NAMES.get(majority_folder, majority_folder.replace("_", " ").title())
 
+            # Vì ta đã trộn vector, điểm similarity có thể vọt qua 1.0 một chút, cần clip lại để tính % cho đẹp
             confidence_scores = np.clip(top_k_sims, 0.0, 1.0) * 100
 
-            # Xây dựng mảng kết quả
             results = []
             for i, idx in enumerate(top_k_indices):
                 path = db_paths[idx]
@@ -174,7 +201,7 @@ def search():
                     "image_url": f"/dataset/{path}"
                 })
 
-            # Trả kết quả cuối cùng cho Client
+            # Trả kết quả
             yield json.dumps({
                 "step": "Hoàn tất!",
                 "predicted_dish": predicted_dish,
