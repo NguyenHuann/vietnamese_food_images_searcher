@@ -102,10 +102,10 @@ for root, _, files in os.walk(DATASET_DIR):
 # 5. LƯU KẾT QUẢ XUỐNG Ổ CỨNG
 # ==========================================
 print("3. Đang đóng gói dữ liệu...")
-with open("vectors_fixed.pkl", "wb") as f:
+with open("vectors_v4.pkl", "wb") as f:
     pickle.dump(np.array(vectors), f)
 
-with open("paths_fixed.pkl", "wb") as f:
+with open("paths_v4.pkl", "wb") as f:
     pickle.dump(paths, f)
 
 print(f"\n✅ [THÀNH CÔNG] Đã chuyển đổi {len(vectors)} bức ảnh thành các vector 512 chiều.")
