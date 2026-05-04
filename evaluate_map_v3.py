@@ -5,9 +5,9 @@ from tqdm import tqdm
 K = 5  # Số lượng ảnh trả về muốn đánh giá (Top-50)
 
 print("Đang tải cơ sở dữ liệu Vector...")
-with open("vectors_v3.pkl", "rb") as f:
+with open("vectors_v4.pkl", "rb") as f:
     vectors = pickle.load(f)  # Mảng numpy shape (N, 512)
-with open("paths_v3.pkl", "rb") as f:
+with open("paths_v4.pkl", "rb") as f:
     paths = pickle.load(f)
 
 # Trích xuất nhãn gốc từ đường dẫn (ví dụ: 'bun_bo_hue/img1.jpg' -> 'bun_bo_hue')
