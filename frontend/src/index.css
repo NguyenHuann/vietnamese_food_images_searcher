@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-body: "Crimson Pro", serif;
+
+  /* Culinary Alchemist Palette - Refined to match image */
+  --color-primary: #e65100; /* Terracotta/Orange from the image */
+  --color-primary-container: #ff9800;
+  --color-on-primary: #ffffff;
+  
+  --color-secondary: #2e7d32;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #c8e6c9;
+  --color-on-secondary-container: #1b5e20;
+
+  --color-surface: #ffffff; 
+  --color-on-surface: #1a1c2e; /* Dark navy from the image */
+  --color-on-surface-variant: #6b7280; 
+
+  --color-surface-container-low: #f9fafb;
+  --color-surface-container: #f3f4f6;
+  --color-surface-container-high: #e5e7eb;
+  --color-surface-container-highest: #d1d5db;
+  --color-surface-container-lowest: #ffffff;
+
+  --color-outline: #9ca3af;
+  --color-outline-variant: #e5e7eb;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-body selection:bg-primary/20 selection:text-primary;
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold text-on-surface;
+    letter-spacing: -0.01em;
+  }
+
+  /* Image Labels from the screenshot */
+  .micro-label {
+    @apply text-[10px] font-sans font-medium uppercase tracking-[0.1em] text-on-surface/40 mb-1;
+  }
+}
+
+@layer components {
+  .steam-glass {
+    @apply bg-surface/70 backdrop-blur-xl border border-white/20;
+  }
+
+  .bg-rice-paper {
+    background-image: radial-gradient(circle at 2px 2px, rgba(138, 114, 107, 0.05) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

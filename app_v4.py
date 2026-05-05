@@ -84,20 +84,23 @@ try:
         db_vectors = pickle.load(f)
     with open(PATH_FILE, "rb") as f:
         db_paths = pickle.load(f)
-    print(f"✅ Đã nạp thành công {len(db_vectors)} vector đặc trưng.")
+    print(f"Đã nạp thành công {len(db_vectors)} vector đặc trưng.")
 except Exception as e:
-    print(f"❌ Lỗi nạp dữ liệu vector: {e}")
+    print(f"Lỗi nạp dữ liệu vector: {e}")
 
 # Từ điển ánh xạ tên món
 DISH_VN_NAMES = {
-    "banh_cuon": "Bánh Cuốn", "bun_bo_hue": "Bún Bò Huế", "pho": "Phở",
-    "bun_rieu": "Bún Riêu", "banh_bot_loc": "Bánh Bột Lọc", "banh_can": "Bánh Căn",
-    "banh_canh": "Bánh Canh", "banh_khot": "Bánh Khọt", "banh_mi": "Bánh Mì",
+    "banh_beo": "Bánh Bèo", "banh_bot_loc": "Bánh Bột Lọc", "banh_can": "Bánh Căn",
+    "banh_canh": "Bánh Canh", "banh_chung": "Bánh Chưng", "banh_cuon": "Bánh Cuốn",
+    "banh_duc": "Bánh Đúc", "banh_gio": "Bánh Giò", "banh_khot": "Bánh Khọt",
+    "banh_mi": "Bánh Mì", "banh_pia": "Bánh Pía", "banh_tet": "Bánh Tét",
     "banh_trang_nuong": "Bánh Tráng Nướng", "banh_xeo": "Bánh Xèo",
-    "bun_dau_mam_tom": "Bún Đậu Mắm Tôm", "bun_mam": "Bún Mắm", "bun_thit_nuong": "Bún Thịt Nướng",
-    "canh_cua": "Canh Cua", "chao_long": "Cháo Lòng", "com_tam": "Cơm Tấm",
-    "goi_cuon": "Gỏi Cuốn", "hu_tieu": "Hủ Tiếu", "mi_quang": "Mì Quảng",
-    # AI sẽ tự động xử lý các món còn lại trong bộ dữ liệu 30 món bằng cách replace "_" thành dấu cách
+    "bun_bo_hue": "Bún Bò Huế", "bun_dau_mam_tom": "Bún Đậu Mắm Tôm",
+    "bun_mam": "Bún Mắm", "bun_rieu": "Bún Riêu", "bun_thit_nuong": "Bún Thịt Nướng",
+    "ca_kho_to": "Cá Kho Tộ", "canh_chua": "Canh Chua", "cao_lau": "Cao Lầu",
+    "chao_long": "Cháo Lòng", "com_tam": "Cơm Tấm", "goi_cuon": "Gỏi Cuốn",
+    "hu_tieu": "Hủ Tiếu", "mi_quang": "Mì Quảng", "nem_chua": "Nem Chua",
+    "pho": "Phở", "xoi_xeo": "Xôi Xéo"
 }
 
 
@@ -186,7 +189,7 @@ def search():
             predicted_dish = DISH_VN_NAMES.get(majority_folder, majority_folder.replace("_", " ").title())
 
             # Vì ta đã trộn vector, điểm similarity có thể vọt qua 1.0 một chút, cần clip lại để tính % cho đẹp
-            confidence_scores = np.clip(top_k_sims, 0.0, 1.0) * 100
+            confidence_scores = np.clip(top_k_sims, 0.0, 1.0)
 
             results = []
             for i, idx in enumerate(top_k_indices):
@@ -217,5 +220,5 @@ def search():
 
 
 if __name__ == "__main__":
-    print("Server đang chạy tại: http://localhost:5000")
+    print("Server đang chạy tại: http://localhost:3000")
     app.run(host="0.0.0.0", port=5000, debug=False)

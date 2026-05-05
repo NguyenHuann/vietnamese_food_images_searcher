@@ -1,0 +1,436 @@
+{
+  "Phở": {
+    "description": "Phở là tinh hoa ẩm thực Việt, nổi tiếng toàn cầu với nước dùng trong, ngọt thanh từ xương bò và hương thơm của các loại gia vị hồi, quế.",
+    "ingredients": [
+      { "name": "Thịt bò", "icon": "Beef", "description": "Thịt bò tái hoặc chín, thái lát mỏng." },
+      { "name": "Bánh phở", "icon": "Zap", "description": "Sợi phở tươi mềm mịn, làm từ gạo." },
+      { "name": "Rau thơm", "icon": "Leaf", "description": "Húng quế, ngò gai, giá đỗ tươi." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Ninh xương", "desc": "Ninh xương bò với gừng nướng, hành nướng trong 6-8 tiếng." },
+      { "step": "02", "title": "Nêm nếm gia vị", "desc": "Thêm hoa hồi, quế, thảo quả và nước mắm ngon." },
+      { "step": "03", "title": "Chần bánh phở", "desc": "Chần bánh phở tươi qua nước sôi, xếp vào tô cùng thịt bò." },
+      { "step": "04", "title": "Trình bày", "desc": "Chan nước dùng nóng, thêm hành lá, ngò, ăn kèm giá đỗ và chanh." }
+    ]
+  },
+  "Bún Bò Huế": {
+    "description": "Món bún đặc trưng của xứ Huế với nước dùng cay nồng, thơm mùi mắm ruốc và sả, ăn kèm với sợi bún to đặc trưng.",
+    "ingredients": [
+      { "name": "Thịt bò bắp", "icon": "Beef", "description": "Thịt bò bắp hầm mềm, thái lát." },
+      { "name": "Sả", "icon": "Zap", "description": "Sả tươi đập dập, hương thơm đặc trưng." },
+      { "name": "Rau sống", "icon": "Leaf", "description": "Bắp chuối, rau muống, kinh giới." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Hầm xương bò", "desc": "Hầm xương ống bò với sả cây đập dập để lấy nước dùng trong." },
+      { "step": "02", "title": "Nấu mắm ruốc", "desc": "Lọc mắm ruốc Huế vào nồi nước dùng, thêm màu điều." },
+      { "step": "03", "title": "Luộc bắp bò", "desc": "Bắp bò luộc mềm tới, thái lát mỏng vừa ăn." },
+      { "step": "04", "title": "Hoàn thiện", "desc": "Xếp bún, thịt bò, chả cua, chan nước dùng sôi và rắc hành tây." }
+    ]
+  },
+  "Bánh Cuốn": {
+    "description": "Bánh được tráng mỏng từ bột gạo, cuốn nhân thịt băm và mộc nhĩ, ăn kèm với chả quế và nước mắm chua ngọt.",
+    "ingredients": [
+      { "name": "Bột gạo", "icon": "Zap", "description": "Hỗn hợp bột gạo và bột năng tráng mỏng." },
+      { "name": "Nhân thịt", "icon": "Beef", "description": "Thịt heo băm xào với mộc nhĩ, hành tím." },
+      { "name": "Hành phi", "icon": "Leaf", "description": "Hành tím phi vàng giòn rắc lên trên." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Chuẩn bị bột", "desc": "Pha bột gạo, bột năng với nước và muối, để bột nghỉ 30 phút." },
+      { "step": "02", "title": "Làm nhân", "desc": "Xào thịt băm với mộc nhĩ, hành tây, nêm gia vị vừa ăn." },
+      { "step": "03", "title": "Tráng bánh", "desc": "Dùng hơi nước tráng bột thật mỏng trên vải căng, lấy bánh ra cuốn nhân." },
+      { "step": "04", "title": "Thưởng thức", "desc": "Ăn nóng cùng chả lụa, rau thơm và nước mắm tỏi ớt." }
+    ]
+  },
+  "Bún Riêu": {
+    "description": "Món bún dân dã với nước dùng chua thanh từ cà chua và vị béo ngậy của gạch cua đồng xào thơm.",
+    "ingredients": [
+      { "name": "Cua đồng", "icon": "Beef", "description": "Cua đồng xay nhuyễn lấy nước cốt làm riêu." },
+      { "name": "Cà chua", "icon": "Leaf", "description": "Cà chua tạo màu đỏ tự nhiên và vị chua thanh." },
+      { "name": "Đậu phụ", "icon": "Zap", "description": "Đậu phụ chiên vàng, thấm đẫm nước dùng." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Nấu riêu cua", "desc": "Đun nước cốt cua với muối cho riêu kết tảng, vớt để riêng." },
+      { "step": "02", "title": "Xào cà chua", "desc": "Phi thơm hành, xào cà chua with gạch cua để tạo màu đẹp." },
+      { "step": "03", "title": "Nấu nước dùng", "desc": "Đổ cà chua vào nồi nước cua, thêm đậu phụ, nêm mắm tôm." },
+      { "step": "04", "title": "Trình bày", "desc": "Cho bún vào bát, thêm riêu cua, đậu phụ, chan nước dùng và ăn kèm rau kinh giới." }
+    ]
+  },
+  "Bánh Bột Lọc": {
+    "description": "Món bánh đặc sản Huế với lớp vỏ trong suốt dai dai, bên trong là nhân tôm thịt đậm đà màu đỏ của gạch tôm.",
+    "ingredients": [
+      { "name": "Bột năng", "icon": "Zap", "description": "Bột năng nhào nước sôi tạo độ trong và dai." },
+      { "name": "Tôm tươi", "icon": "Beef", "description": "Tôm nhỏ rim mặn ngọt cùng thịt ba chỉ." },
+      { "name": "Mỡ hành", "icon": "Leaf", "description": "Hành lá phi mỡ thơm lừng phết lên bánh." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Làm nhân", "desc": "Rim tôm và thịt ba chỉ xắt nhỏ with gia vị cho đến khi săn lại." },
+      { "step": "02", "title": "Nhào bột", "desc": "Cho nước sôi vào bột năng, nhào kỹ đến khi bột dẻo mịn." },
+      { "step": "03", "title": "Nặn bánh", "desc": "Lấy miếng bột nhỏ, ép mỏng, cho nhân tôm thịt vào giữa và dán mép." },
+      { "step": "04", "title": "Luộc bánh", "desc": "Luộc bánh trong nước sôi đến khi bánh nổi lên và trong suốt thì vớt ra." }
+    ]
+  },
+  "Bánh Căn": {
+    "description": "Món bánh nướng trong khuôn đất nung đặc trưng của miền Trung, giòn bên ngoài, mềm bên trong, ăn kèm nước chấm xíu mại.",
+    "ingredients": [
+      { "name": "Bột gạo", "icon": "Zap", "description": "Gạo ngâm xay mịn pha with một ít cơm nguội." },
+      { "name": "Trứng/Hải sản", "icon": "Beef", "description": "Trứng cút hoặc tôm, mực tươi cho lên mặt bánh." },
+      { "name": "Nước mắm nêm", "icon": "Leaf", "description": "Nước mắm pha xíu mại, hành phi và xoài băm." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Pha bột", "desc": "Xay gạo with cơm nguội và nước, để bột nở tự nhiên." },
+      { "step": "02", "title": "Nướng bánh", "desc": "Làm nóng khuôn đất, thoa mỡ, đổ bột vào và thêm nhân trứng/tôm." },
+      { "step": "03", "title": "Làm nước chấm", "desc": "Nấu xíu mại thịt heo, pha nước mắm chua ngọt hoặc mắm nêm." },
+      { "step": "04", "title": "Thưởng thức", "desc": "Gỡ bánh ra khỏi khuôn, chấm ngập trong bát nước chấm xíu mại nóng hổi." }
+    ]
+  },
+  "Bánh Canh": {
+    "description": "Sợi bánh to, dai mềm từ bột lọc hoặc bột gạo, nước dùng đậm đà sền sệt, thường nấu with cá lọc, cua hoặc chả cá.",
+    "ingredients": [
+      { "name": "Giò heo", "icon": "Beef", "description": "Giò heo hầm mềm rục, béo ngậy." },
+      { "name": "Sợi bánh canh", "icon": "Zap", "description": "Sợi bánh canh làm từ bột lọc hoặc bột gạo dai dẻo." },
+      { "name": "Hành ngò", "icon": "Leaf", "description": "Hành ngò xắt nhuyễn rắc lên trên bát." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Hầm xương", "desc": "Hầm xương giò heo with hành tím nướng để nước dùng trong và ngọt." },
+      { "step": "02", "title": "Làm sợi bánh", "desc": "Nhào bột gạo/bột năng, cán mỏng và cắt sợi vừa ăn." },
+      { "step": "03", "title": "Nấu nước lèo", "desc": "Thêm tôm, cua hoặc chả cá vào nồi nước dùng, nêm nếm sền sệt." },
+      { "step": "04", "title": "Hoàn thiện", "desc": "Trụng sợi bánh, múc ra tô kèm nhân và chan nước lèo nóng." }
+    ]
+  },
+  "Bánh Khọt": {
+    "description": "Món bánh chiên giòn rụm trong khuôn nhỏ, có màu vàng của nghệ, nhân tôm tươi và mỡ hành thơm lừng.",
+    "ingredients": [
+      { "name": "Bột nghệ", "icon": "Zap", "description": "Bột gạo pha nước cốt dừa và bột nghệ tạo màu vàng." },
+      { "name": "Tôm tươi", "icon": "Beef", "description": "Tôm tươi lột vỏ đặt chính giữa miếng bánh." },
+      { "name": "Rau sống", "icon": "Leaf", "description": "Cải bẹ xanh, xà lách, rau thơm các loại." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Pha bột", "desc": "Trộn bột gạo, nước cốt dừa, bột nghệ và hành lá xắt nhỏ." },
+      { "step": "02", "title": "Đổ bánh", "desc": "Làm nóng khuôn, cho dầu vào, đổ bột và đặt tôm lên trên, đậy nắp." },
+      { "step": "03", "title": "Chiên giòn", "desc": "Mở nắp, chiên đến khi viền bánh giòn rụm và bong khỏi khuôn." },
+      { "step": "04", "title": "Thưởng thức", "desc": "Cuốn bánh vào rau cải, chấm nước mắm chua ngọt có đu đủ xanh." }
+    ]
+  },
+  "Bánh Mì": {
+    "description": "Biểu tượng ẩm thực đường phố Việt Nam, kết hợp vỏ bánh giòn with pate gan, chả lụa và đồ chua thanh mát.",
+    "ingredients": [
+      { "name": "Pate gan", "icon": "Beef", "description": "Pate gan heo béo ngậy làm thủ công." },
+      { "name": "Bánh mì vỏ giòn", "icon": "Zap", "description": "Vỏ ngoài giòn tan, ruột đặc mịn." },
+      { "name": "Đồ chua", "icon": "Leaf", "description": "Cà rốt, củ cải ngâm chua ngọt giòn rụm." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Chuẩn bị nhân", "desc": "Thái lát chả lụa, thịt xá xíu, làm đồ chua và chuẩn bị rau ngò." },
+      { "step": "02", "title": "Nướng bánh", "desc": "Nướng sơ bánh mì trên lửa hoặc lò cho nóng giòn." },
+      { "step": "03", "title": "Kẹp nhân", "desc": "Xẻ dọc bánh, phết bơ, pate rồi xếp thịt, chả, đồ chua vào." },
+      { "step": "04", "title": "Hoàn tất", "desc": "Thêm vài giọt nước tương (xì dầu) và ớt lát nếu muốn cay." }
+    ]
+  },
+  "Bánh Tráng Nướng": {
+    "description": "Được mệnh danh là 'Pizza Việt Nam', món ăn đường phố Đà Lạt nướng trên than hồng with trứng, phô mai và hành lá.",
+    "ingredients": [
+      { "name": "Bánh tráng", "icon": "Zap", "description": "Bánh tráng mỏng dùng để nướng trên than." },
+      { "name": "Trứng cút/gà", "icon": "Beef", "description": "Trứng đánh tan dàn đều trên mặt bánh." },
+      { "name": "Hành lá & Khô bò", "icon": "Leaf", "description": "Hành lá, khô bò, tép khô và tương ớt." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Chuẩn bị bếp", "desc": "Nhóm than hoa cháy đỏ hồng, đặt vỉ nướng lên trên." },
+      { "step": "02", "title": "Nướng sơ", "desc": "Đặt bánh tráng lên vỉ, quết mỡ hành lên mặt bánh." },
+      { "step": "03", "title": "Thêm nhân", "desc": "Đập trứng lên bánh, dùng thìa dàn đều cùng khô bò, tép khô." },
+      { "step": "04", "title": "Gập bánh", "desc": "Khi trứng chín và bánh giòn, gập đôi hoặc để nguyên rồi lấy ra." }
+    ]
+  },
+  "Bánh Xèo": {
+    "description": "Bánh chiên mỏng, giòn tan, có màu vàng rực từ nghệ, nhân tôm thịt và giá đỗ, ăn kèm rau rừng.",
+    "ingredients": [
+      { "name": "Bột bánh xèo", "icon": "Zap", "description": "Bột gạo pha nước cốt dừa và hành lá." },
+      { "name": "Tôm & Thịt heo", "icon": "Beef", "description": "Tôm tươi và thịt ba chỉ xào sơ làm nhân." },
+      { "name": "Rau cải & Giá", "icon": "Leaf", "description": "Giá đỗ cho vào trong bánh và rau sống ăn kèm." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Xào nhân", "desc": "Cho tôm, thịt vào chảo xào chín tới cùng hành tây." },
+      { "step": "02", "title": "Đổ bột", "desc": "Đổ một vá bột vào chảo nóng, xoay đều cho bột mỏng." },
+      { "step": "03", "title": "Cho giá", "desc": "Rắc giá đỗ lên một nửa bánh, đậy nắp 2 phút cho bánh chín." },
+      { "step": "04", "title": "Gập bánh", "desc": "Mở nắp, chiên thêm chút cho vỏ thật giòn rồi gập đôi bánh." }
+    ]
+  },
+  "Bún Đậu Mắm Tôm": {
+    "description": "Món ăn đậm chất Hà Nội with bún lá, đậu phụ rán giòn, chả cốm và linh hồn là bát mắm tôm pha chanh ớt sủi bọt.",
+    "ingredients": [
+      { "name": "Đậu phụ", "icon": "Beef", "description": "Đậu phụ trắng cắt miếng chiên vàng giòn." },
+      { "name": "Bún lá", "icon": "Zap", "description": "Bún tươi ép thành từng lá nhỏ cắt miếng." },
+      { "name": "Mắm tôm", "icon": "Leaf", "description": "Mắm tôm ngon pha đường, chanh, ớt và mỡ nóng." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Rán đậu", "desc": "Chiên đậu phụ trong dầu nóng đến khi lớp vỏ vàng giòn rụm." },
+      { "step": "02", "title": "Chuẩn bị mẹt", "desc": "Xếp bún lá, chả cốm chiên, thịt chân giò luộc lên mẹt lót lá chuối." },
+      { "step": "03", "title": "Pha mắm tôm", "desc": "Cho mắm tôm vào bát, thêm đường, chanh, ớt, đánh sủi bọt rồi rót mỡ nóng vào." },
+      { "step": "04", "title": "Thưởng thức", "desc": "Chấm đậu nóng hổi vào mắm tôm và ăn kèm rau kinh giới, tía tô." }
+    ]
+  },
+  "Bún Mắm": {
+    "description": "Đặc sản miền Tây sông nước with nước dùng nấu từ mắm cá linh, cá sặc nồng nàn, ăn kèm tôm, mực và thịt heo quay.",
+    "ingredients": [
+      { "name": "Mắm cá linh", "icon": "Beef", "description": "Mắm cá linh đặc trưng tạo hương vị nước dùng." },
+      { "name": "Heo quay", "icon": "Zap", "description": "Thịt heo quay da giòn cắt miếng vừa ăn." },
+      { "name": "Rau đắng/Kèo nèo", "icon": "Leaf", "description": "Các loại rau dân dã đặc trưng của miền Tây." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Nấu mắm", "desc": "Nấu mắm with nước lọc cho rã thịt cá, lọc lấy nước cốt." },
+      { "step": "02", "title": "Ninh nước lèo", "desc": "Đun nước mắm with sả băm, tỏi phi và nêm gia vị cho dịu lại." },
+      { "step": "03", "title": "Chuẩn bị nhân", "desc": "Luộc tôm, mực, thái thịt heo quay và cà tím cắt khúc." },
+      { "step": "04", "title": "Trình bày", "desc": "Cho bún vào tô, xếp nhân lên mặt, chan nước lèo và ăn cùng rau sống." }
+    ]
+  },
+  "Bún Thịt Nướng": {
+    "description": "Sự kết hợp hài hòa giữa bún tươi, thịt heo nướng thơm phức, rau sống và nước mắm chua ngọt chan đều.",
+    "ingredients": [
+      { "name": "Thịt heo nướng", "icon": "Beef", "description": "Thịt nạc vai ướp gia vị, nướng trên than hồng." },
+      { "name": "Bún tươi", "icon": "Zap", "description": "Sợi bún tươi nhỏ trắng mịn." },
+      { "name": "Đậu phộng", "icon": "Leaf", "description": "Đậu phộng rang giã dập tạo độ béo bùi." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Ướp thịt", "desc": "Ướp thịt heo with sả, hành tím, mật ong và ngũ vị hương qua đêm." },
+      { "step": "02", "title": "Nướng thịt", "desc": "Xếp thịt lên vỉ, nướng than hoa cho cháy cạnh thơm lừng." },
+      { "step": "03", "title": "Chuẩn bị tô", "desc": "Xếp rau xà lách, giá đỗ, bún và thịt nướng vào bát." },
+      { "step": "04", "title": "Chan mắm", "desc": "Rắc đậu phộng, đồ chua và chan nước mắm chua ngọt pha tỏi ớt." }
+    ]
+  },
+  "Canh Cua": {
+    "description": "Món canh giải nhiệt ngày hè của người Việt, nấu từ cua đồng giã tay with rau mồng tơi, rau đay và mướp hương.",
+    "ingredients": [
+      { "name": "Cua đồng", "icon": "Beef", "description": "Cua đồng tươi giã nhỏ lọc lấy nước thịt." },
+      { "name": "Rau mồng tơi", "icon": "Leaf", "description": "Rau mồng tơi xanh mướt nấu cùng mướp hương." },
+      { "name": "Cà pháo", "icon": "Zap", "description": "Ăn kèm canh cua không thể thiếu bát cà pháo muối." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Lọc cua", "desc": "Giã cua with chút muối, thêm nước và lọc kỹ qua rây lấy nước thịt." },
+      { "step": "02", "title": "Đun nước cua", "desc": "Đun nhỏ lửa nước cua, khuấy nhẹ cho gạch nổi thành mảng rồi vớt riêng." },
+      { "step": "03", "title": "Nấu rau", "desc": "Cho rau mồng tơi, mướp hương vào nồi, nêm gia vị vừa ăn." },
+      { "step": "04", "title": "Thưởng thức", "desc": "Cho gạch cua lên trên, ăn kèm with cà pháo muối giòn tan." }
+    ]
+  },
+  "Cháo Lòng": {
+    "description": "Món cháo được nấu từ nước luộc lòng và huyết heo, đậm đà with các loại lòng non, dồi và tim gan heo.",
+    "ingredients": [
+      { "name": "Lòng heo", "icon": "Beef", "description": "Lòng non, dồi, gan, tim luộc chín thái mỏng." },
+      { "name": "Gạo tẻ & nếp", "icon": "Zap", "description": "Gạo rang vàng trước khi nấu để cháo thơm hơn." },
+      { "name": "Hành lá & Gừng", "icon": "Leaf", "description": "Hành lá, gừng thái sợi khử mùi và tăng hương vị." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Nấu cháo", "desc": "Ninh gạo rang with nước luộc lòng cho đến khi hạt gạo nở nhừ." },
+      { "step": "02", "title": "Pha huyết", "desc": "Cho huyết heo vào nồi cháo khuấy đều để tạo màu nâu đặc trưng." },
+      { "step": "03", "title": "Thái lòng", "desc": "Các loại lòng luộc chín, thái miếng vừa ăn bày ra đĩa." },
+      { "step": "04", "title": "Thưởng thức", "desc": "Múc cháo ra bát, rắc hành, tiêu, ăn cùng lòng luộc và quẩy giòn." }
+    ]
+  },
+  "Cơm Tấm": {
+    "description": "Cơm nấu từ hạt gạo vụn, ăn kèm sườn nướng mặn ngọt, bì thính thơm và chả trứng béo ngậy.",
+    "ingredients": [
+      { "name": "Sườn nướng", "icon": "Beef", "description": "Sườn heo ướp mắm tỏi nướng cháy cạnh." },
+      { "name": "Gạo tấm", "icon": "Zap", "description": "Hạt gạo vỡ đặc trưng mang hương vị dân dã." },
+      { "name": "Chả trứng", "icon": "Leaf", "description": "Trứng hấp cùng thịt băm và mộc nhĩ." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Nấu cơm", "desc": "Hấp gạo tấm chín tới, giữ được độ tơi xốp." },
+      { "step": "02", "title": "Nướng sườn", "desc": "Ướp sườn with mật ong, dầu hào rồi nướng than hoa." },
+      { "step": "03", "title": "Làm nước mắm", "desc": "Pha nước mắm kẹo đặc with đường và tỏi ớt băm." },
+      { "step": "04", "title": "Trình bày", "desc": "Xếp cơm, sườn, chả trứng, đồ chua lên đĩa và rưới mỡ hành." }
+    ]
+  },
+  "Gỏi Cuốn": {
+    "description": "Món ăn thanh đạm, tốt cho sức khỏe with tôm, thịt heo, bún và rau sống cuốn trong lớp bánh tráng mỏng.",
+    "ingredients": [
+      { "name": "Tôm & Thịt heo", "icon": "Beef", "description": "Tôm luộc lột vỏ và thịt ba chỉ luộc thái mỏng." },
+      { "name": "Bánh tráng", "icon": "Zap", "description": "Bánh tráng dẻo dai dùng để cuốn trực tiếp." },
+      { "name": "Hẹ & Rau thơm", "icon": "Leaf", "description": "Hẹ nguyên cọng đặt lộ ra ngoài cuốn gỏi." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Sơ chế", "desc": "Luộc tôm và thịt ba chỉ with gừng cho thơm, thái lát mỏng." },
+      { "step": "02", "title": "Chuẩn bị rau", "desc": "Rửa sạch rau sống, giá đỗ, hẹ cắt khúc dài." },
+      { "step": "03", "title": "Cuốn gỏi", "desc": "Làm ướt bánh tráng, xếp rau, bún, thịt và tôm rồi cuốn chặt tay." },
+      { "step": "04", "title": "Làm nước chấm", "desc": "Chấm cùng tương đen (tương hột) xào tỏi và đậu phộng rang." }
+    ]
+  },
+  "Hủ Tiếu": {
+    "description": "Món ăn phổ biến miền Nam with sợi hủ tiếu dai, nước dùng ngọt lịm từ xương heo và mực khô.",
+    "ingredients": [
+      { "name": "Xá xíu & Tôm", "icon": "Beef", "description": "Thịt xá xíu thái mỏng và tôm tươi luộc chín." },
+      { "name": "Sợi hủ tiếu", "icon": "Zap", "description": "Sợi hủ tiếu khô trụng chín có độ dai mướt." },
+      { "name": "Hẹ & Tỏi phi", "icon": "Leaf", "description": "Tỏi phi vàng và lá hẹ không thể thiếu." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Ninh xương", "desc": "Ninh xương heo cùng tôm khô, mực nướng để nước ngọt thanh." },
+      { "step": "02", "title": "Trình bày tô", "desc": "Cho hủ tiếu đã trụng vào bát, thêm thịt băm, xá xíu, tôm." },
+      { "step": "03", "title": "Chan nước", "desc": "Chan nước dùng nóng hổi, thêm giá đỗ và hẹ." },
+      { "step": "04", "title": "Hoàn tất", "desc": "Rắc tỏi phi thơm và tiêu xay lên trên mặt bát." }
+    ]
+  },
+  "Mì Quảng": {
+    "description": "Sợi mì vàng to bản, nước dùng đậm đà sâm sấp bát, ăn kèm tôm thịt và bánh tráng mè nướng giòn.",
+    "ingredients": [
+      { "name": "Thịt gà/Tôm", "icon": "Beef", "description": "Nhân tôm thịt rim đậm đà hoặc gà ta thả vườn." },
+      { "name": "Mì Quảng", "icon": "Zap", "description": "Sợi mì bản to màu vàng nghệ hoặc trắng." },
+      { "name": "Bánh tráng mè", "icon": "Leaf", "description": "Bánh tráng nướng bẻ nhỏ trộn vào mì khi ăn." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Nấu nhân", "desc": "Rim tôm, thịt with củ nén và nghệ tươi cho thấm vị." },
+      { "step": "02", "title": "Nấu nước lèo", "desc": "Dùng nước hầm xương nấu cùng nhân, nêm đậm đà." },
+      { "step": "03", "title": "Sắp xếp", "desc": "Cho mì vào tô, xếp nhân lên trên, chan nước dùng sâm sấp." },
+      { "step": "04", "title": "Thưởng thức", "desc": "Thêm đậu phộng, hành lá và bẻ bánh tráng nướng vào ăn kèm." }
+    ]
+  },
+  "Canh Chua": {
+    "description": "Món canh đặc trưng miền Tây with vị chua của me, ngọt của cá lóc và thơm của dứa, bạc hà.",
+    "ingredients": [
+      { "name": "Cá lóc", "icon": "Beef", "description": "Cá lóc đồng tươi, thịt chắc ngọt." },
+      { "name": "Me & Dứa", "icon": "Zap", "description": "Me chua và dứa (thơm) tạo vị chua ngọt hài hòa." },
+      { "name": "Bạc hà & Giá", "icon": "Leaf", "description": "Bạc hà (dọc mùng), đậu bắp, giá đỗ, rau ngổ." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Nấu nước me", "desc": "Đun sôi nước me, lọc bỏ bã lấy nước cốt chua." },
+      { "step": "02", "title": "Luộc cá", "desc": "Thả cá vào nước me đang sôi nấu chín rồi vớt ra để riêng." },
+      { "step": "03", "title": "Nấu rau", "desc": "Cho dứa, cà chua, bạc hà, đậu bắp vào đun sôi lại." },
+      { "step": "04", "title": "Hoàn tất", "desc": "Cho cá lại vào nồi, thêm giá, rau ngổ và tắt bếp ngay." }
+    ]
+  },
+  "Bánh Bèo": {
+    "description": "Món bánh dân dã của miền Trung, bánh mỏng tròn trịa trong chén nhỏ, ăn kèm tôm chấy và mỡ hành.",
+    "ingredients": [
+      { "name": "Bột gạo", "icon": "Zap", "description": "Bột gạo pha nước đổ vào chén nhỏ hấp chín." },
+      { "name": "Tôm chấy", "icon": "Beef", "description": "Tôm khô giã nhuyễn, xào khô thành bột đỏ." },
+      { "name": "Nước mắm ngọt", "icon": "Leaf", "description": "Nước mắm pha loãng, vị ngọt thanh đặc trưng." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Hấp bánh", "desc": "Đổ bột vào chén nhỏ, hấp cách thủy đến khi bánh xoáy sâu ở giữa." },
+      { "step": "02", "title": "Làm tôm chấy", "desc": "Tôm khô ngâm mềm, giã nhỏ rồi sao trên chảo cho tơi và khô." },
+      { "step": "03", "title": "Phi mỡ hành", "desc": "Hành lá xắt nhỏ, đổ mỡ nóng vào để giữ màu xanh mướt." },
+      { "step": "04", "title": "Trình bày", "desc": "Thêm tôm chấy, mỡ hành lên mặt bánh và chan nước mắm khi ăn." }
+    ]
+  },
+  "Bánh Chưng": {
+    "description": "Linh hồn ngày Tết Việt Nam, bánh vuông vức gói lá dong, tượng trưng cho Đất với nhân đậu xanh thịt mỡ.",
+    "ingredients": [
+      { "name": "Gạo nếp cái", "icon": "Zap", "description": "Gạo nếp trắng ngần, hạt tròn đều thơm phức." },
+      { "name": "Đậu xanh", "icon": "Leaf", "description": "Đậu xanh đồ chín, giã nhuyễn làm nhân bánh." },
+      { "name": "Thịt ba chỉ", "icon": "Beef", "description": "Thịt lợn tươi có cả nạc và mỡ, ướp tiêu thơm." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Chuẩn bị lá", "desc": "Rửa sạch lá dong, tước sống lá và lau thật khô." },
+      { "step": "02", "title": "Gói bánh", "desc": "Xếp lá vào khuôn, cho gạo, đậu, thịt rồi lại một lớp gạo lên trên." },
+      { "step": "03", "title": "Luộc bánh", "desc": "Xếp bánh vào nồi, luộc liên tục trong 10-12 tiếng." },
+      { "step": "04", "title": "Ép bánh", "desc": "Vớt bánh ra, rửa qua nước lạnh rồi ép bằng vật nặng cho bánh chắc." }
+    ]
+  },
+  "Bánh Đúc": {
+    "description": "Món quà quê dân dã, bánh mềm mượt, giòn dai tự nhiên, thường ăn cùng tương bần hoặc thịt băm xào.",
+    "ingredients": [
+      { "name": "Bột gạo", "icon": "Zap", "description": "Bột gạo khuấy cùng nước vôi trong để tạo độ dai." },
+      { "name": "Lạc (Đậu phộng)", "icon": "Leaf", "description": "Lạc luộc chín cho vào bánh tạo độ bùi." },
+      { "name": "Thịt băm", "icon": "Beef", "description": "Thịt xào mộc nhĩ ăn kèm bánh đúc nóng." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Khuấy bột", "desc": "Pha bột với nước vôi, đun lửa nhỏ và khuấy đều tay liên tục." },
+      { "step": "02", "title": "Thêm lạc", "desc": "Khi bột bắt đầu trong và dẻo, cho lạc luộc vào trộn đều." },
+      { "step": "03", "title": "Đổ khuôn", "desc": "Đổ bột ra mẹt hoặc đĩa, dàn mỏng và để nguội cho bánh đông." },
+      { "step": "04", "title": "Thưởng thức", "desc": "Cắt miếng nhỏ, chấm tương bần hoặc ăn cùng súp thịt băm nóng." }
+    ]
+  },
+  "Bánh Giò": {
+    "description": "Món bánh ăn sáng nóng hổi, lớp vỏ bột gạo mềm mượt bao bọc nhân thịt băm, mộc nhĩ thơm nồng tiêu.",
+    "ingredients": [
+      { "name": "Bột gạo tẻ", "icon": "Zap", "description": "Bột gạo khuấy đặc, mịn màng làm vỏ bánh." },
+      { "name": "Thịt lợn băm", "icon": "Beef", "description": "Thịt vai sấn băm nhỏ xào cùng mộc nhĩ." },
+      { "name": "Lá chuối", "icon": "Leaf", "description": "Lá chuối rừng luộc sơ để gói bánh có mùi thơm." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Khuấy vỏ", "desc": "Khuấy bột gạo với nước dùng xương cho đến khi đặc quánh." },
+      { "step": "02", "title": "Làm nhân", "desc": "Xào thịt băm, mộc nhĩ, hành khô và thật nhiều tiêu đen." },
+      { "step": "03", "title": "Gói bánh", "desc": "Cho vỏ vào lá chuối, thêm nhân vào giữa rồi bọc kín lại." },
+      { "step": "04", "title": "Hấp bánh", "desc": "Hấp cách thủy bánh trong khoảng 30-45 phút là chín." }
+    ]
+  },
+  "Bánh Pía": {
+    "description": "Đặc sản Sóc Trăng với nhiều lớp vỏ mỏng tang, nhân sầu riêng thơm nồng và trứng muối bùi béo.",
+    "ingredients": [
+      { "name": "Sầu riêng", "icon": "Leaf", "description": "Thịt sầu riêng tươi tạo hương vị đặc trưng." },
+      { "name": "Đậu xanh", "icon": "Zap", "description": "Đậu xanh sên nhuyễn làm nền cho nhân bánh." },
+      { "name": "Trứng muối", "icon": "Beef", "description": "Lòng đỏ trứng muối đặt ở giữa nhân bánh." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Làm vỏ", "desc": "Nhào bột mì thành hai loại bột nước và bột dầu để tạo lớp." },
+      { "step": "02", "title": "Sên nhân", "desc": "Sên đậu xanh với đường và thịt sầu riêng cho đến khi dẻo." },
+      { "step": "03", "title": "Nặn bánh", "desc": "Bọc nhân quanh trứng muối, sau đó bọc lớp vỏ bên ngoài." },
+      { "step": "04", "title": "Nướng bánh", "desc": "Nướng bánh ở nhiệt độ cao, phết lòng đỏ trứng cho màu vàng đẹp." }
+    ]
+  },
+  "Bánh Tét": {
+    "description": "Món bánh Tết của miền Nam và miền Trung, hình trụ dài, tượng trưng cho sự bao bọc của cha mẹ.",
+    "ingredients": [
+      { "name": "Gạo nếp", "icon": "Zap", "description": "Gạo nếp ngon ngâm lá dứa cho màu xanh đẹp." },
+      { "name": "Đậu xanh", "icon": "Leaf", "description": "Đậu xanh không vỏ, nấu chín và đánh nhuyễn." },
+      { "name": "Thịt mỡ", "icon": "Beef", "description": "Thịt heo tẩm ướp gia vị đậm đà làm nhân." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Trải lá", "desc": "Xếp lá chuối thành nhiều lớp, trải gạo nếp lên trên." },
+      { "step": "02", "title": "Đổ nhân", "desc": "Cho đậu xanh và thịt heo vào giữa lớp gạo nếp." },
+      { "step": "03", "title": "Buộc lạt", "desc": "Cuộn tròn bánh và dùng lạt tre buộc chặt theo dọc thân bánh." },
+      { "step": "04", "title": "Luộc bánh", "desc": "Luộc bánh trong nồi nước sôi khoảng 8-10 tiếng." }
+    ]
+  },
+  "Cá Kho Tộ": {
+    "description": "Món cá kho đậm đà trong tộ đất, nước màu hổ phách, vị mặn ngọt cay nồng đưa cơm cực kỳ.",
+    "ingredients": [
+      { "name": "Cá lóc/Cá hú", "icon": "Beef", "description": "Cá tươi cắt khúc, thịt chắc và béo." },
+      { "name": "Nước mắm", "icon": "Zap", "description": "Nước mắm ngon và đường thốt nốt tạo màu." },
+      { "name": "Ớt & Tiêu", "icon": "Leaf", "description": "Ớt chỉ thiên và tiêu sọ tạo vị cay nồng." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Ướp cá", "desc": "Ướp cá với nước mắm, đường, hành tím, tiêu và nước màu." },
+      { "step": "02", "title": "Thắng mỡ", "desc": "Chiên tóp mỡ cho giòn để kho cùng cá cho béo." },
+      { "step": "03", "title": "Kho cá", "desc": "Cho cá vào tộ đất, đun lửa lớn rồi hạ nhỏ lửa cho thấm." },
+      { "step": "04", "title": "Hoàn tất", "desc": "Kho đến khi nước sền sệt, rắc tóp mỡ, hành lá và thật nhiều tiêu." }
+    ]
+  },
+  "Cao Lầu": {
+    "description": "Đặc sản Hội An với sợi mì đặc biệt dùng nước giếng Bá Lễ, ăn kèm xá xíu và ram giòn.",
+    "ingredients": [
+      { "name": "Sợi mì Cao Lầu", "icon": "Zap", "description": "Sợi mì màu vàng nhạt, dẻo thơm hương củi tro." },
+      { "name": "Thịt xá xíu", "icon": "Beef", "description": "Thịt heo ướp ngũ vị hương xíu đậm đà." },
+      { "name": "Rau Trà Quế", "icon": "Leaf", "description": "Rau thơm từ làng rau Trà Quế nổi tiếng." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Làm xá xíu", "desc": "Ướp thịt heo, xíu trên chảo rồi lấy nước đó làm nước dùng." },
+      { "step": "02", "title": "Hấp mì", "desc": "Sợi mì khô ngâm nước rồi hấp cách thủy cho mềm dai." },
+      { "step": "03", "title": "Làm ram", "desc": "Cắt sợi mì thành miếng vuông nhỏ rồi chiên giòn rụm." },
+      { "step": "04", "title": "Trình bày", "desc": "Cho mì ra bát, xếp xá xíu, ram, rau và rưới nước xíu lên." }
+    ]
+  },
+  "Nem Chua": {
+    "description": "Món nhắm đặc sản Thanh Hóa, thịt lợn tươi giã nhuyễn lên men tự nhiên có vị chua cay mặn ngọt.",
+    "ingredients": [
+      { "name": "Thịt lợn mông", "icon": "Beef", "description": "Thịt lợn nạc tươi vừa mổ, còn nóng hổi." },
+      { "name": "Bì lợn", "icon": "Zap", "description": "Bì lợn luộc chín, thái sợi mỏng như chỉ." },
+      { "name": "Lá đinh lăng", "icon": "Leaf", "description": "Lá đinh lăng hoặc lá ổi tạo mùi thơm." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Xay thịt", "desc": "Xay thịt nạc thật mịn, trộn đều với bì lợn sợi." },
+      { "step": "02", "title": "Nêm gia vị", "desc": "Trộn thính gạo, tỏi, ớt và men đóng gói sẵn." },
+      { "step": "03", "title": "Gói nem", "desc": "Nặn nem thành viên dài, thêm tỏi ớt lá đinh lăng rồi bọc kín." },
+      { "step": "04", "title": "Ủ nem", "desc": "Để nem ở nhiệt độ phòng khoảng 2-3 ngày cho chín chua." }
+    ]
+  },
+  "Xôi Xéo": {
+    "description": "Món xôi sáng quen thuộc của người Hà Nội, xôi vàng óng ả thơm mùi nghệ, mỡ hành và đậu xanh.",
+    "ingredients": [
+      { "name": "Gạo nếp", "icon": "Zap", "description": "Gạo nếp cái hoa vàng ngâm nước nghệ tươi." },
+      { "name": "Đậu xanh", "icon": "Leaf", "description": "Đậu xanh đồ chín, nắm thành viên tròn lớn." },
+      { "name": "Hành phi", "icon": "Beef", "description": "Hành ta thái mỏng phi vàng giòn bằng mỡ gà." }
+    ],
+    "recipe": [
+      { "step": "01", "title": "Đồ xôi", "desc": "Gạo nếp đồ hai lửa cho thật dẻo và bóng hạt." },
+      { "step": "02", "title": "Làm đậu", "desc": "Đậu xanh đồ chín, giã tơi rồi nắm chặt lại khi còn nóng." },
+      { "step": "03", "title": "Phi hành", "desc": "Phi hành tím với mỡ gà cho đến khi vàng ruộm, thơm nức." },
+      { "step": "04", "title": "Thưởng thức", "desc": "Múc xôi, dùng dao xéo từng lát mỏng đậu xanh lên trên và rưới mỡ hành." }
+    ]
+  }
+}

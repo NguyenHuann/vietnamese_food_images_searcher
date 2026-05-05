@@ -1,0 +1,8 @@
+{
+  "name": "Culinary Alchemist - Nhà Giả Kim Ẩm Thực",
+  "description": "Một không gian kỹ thuật số nơi di sản ẩm thực Việt Nam giao thoa với công nghệ nhận diện hình ảnh tiên tiến. Khám phá món ăn, tìm hiểu nguyên liệu và những câu chuyện di sản.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": []
+}

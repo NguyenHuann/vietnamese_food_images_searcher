@@ -5,9 +5,8 @@ from tensorflow.keras import layers, models, regularizers
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 import matplotlib.pyplot as plt
 
-# ==========================================
 # 1. CẤU HÌNH
-# ==========================================
+
 BASE_PATH = "/kaggle/input/datasets/anos22/dataset-vn-food-30"
 IMG_SIZE = (224, 224)
 BATCH_SIZE = 32
@@ -25,9 +24,8 @@ DATA_DIR = find_data_path(BASE_PATH)
 TRAIN_DIR = os.path.join(DATA_DIR, "train")
 VAL_DIR = os.path.join(DATA_DIR, "val")
 
-# ==========================================
-# 2. LỚP GeM POOLING (Chuẩn công nghiệp, chống nổ Gradient và hỗ trợ lưu file)
-# ==========================================
+# 2. LỚP GeM POOLING
+
 @tf.keras.utils.register_keras_serializable()
 class GeMPooling(layers.Layer):
     def __init__(self, p=3.0, eps=1e-6, trainable_p=True, **kwargs):
@@ -56,7 +54,6 @@ class GeMPooling(layers.Layer):
         return x
 
     def get_config(self):
-        # Bắt buộc phải có để model.save() và load_model() hoạt động
         config = super().get_config()
         config.update({
             "p": self.p_init,
@@ -65,15 +62,13 @@ class GeMPooling(layers.Layer):
         })
         return config
 
-# ==========================================
+
 # 3. HÀM TRIPLET LOSS (SEMI-HARD MINING CHÍNH XÁC)
-#    - Sửa lỗi "max" → "min" trong chọn negative semi-hard
-#    - Margin an toàn 0.5
-# ==========================================
+
 def custom_triplet_loss(margin=0.5):
     def triplet_loss(y_true, y_pred):
         y_true = tf.cast(tf.squeeze(y_true), tf.int32)
-        embeddings = y_pred   # đã qua UnitNormalization
+        embeddings = y_pred
 
         # Khoảng cách Euclidean bình phương
         dot_product = tf.matmul(embeddings, embeddings, transpose_b=True)
@@ -117,16 +112,14 @@ def custom_triplet_loss(margin=0.5):
         hardest_negative_dist = (
             has_semi_hard * hardest_semi_hard + (1 - has_semi_hard) * hardest_negative_fallback
         )
-        # ----------------------------------------------
 
         loss = tf.maximum(hardest_positive_dist - hardest_negative_dist + margin, 0.0)
         return tf.reduce_mean(loss)
 
     return triplet_loss
 
-# ==========================================
 # 4. PIPELINE DỮ LIỆU
-# ==========================================
+
 train_dataset = tf.keras.utils.image_dataset_from_directory(
     TRAIN_DIR, seed=123, image_size=IMG_SIZE, batch_size=BATCH_SIZE, label_mode='int'
 )
@@ -145,9 +138,8 @@ AUTOTUNE = tf.data.AUTOTUNE
 train_dataset = train_dataset.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
 val_dataset = val_dataset.cache().prefetch(buffer_size=AUTOTUNE)
 
-# ==========================================
 # 5. KIẾN TRÚC MÔ HÌNH
-# ==========================================
+
 base_model = EfficientNetB2(input_shape=(224, 224, 3), include_top=False, weights='imagenet')
 base_model.trainable = False
 
@@ -157,7 +149,6 @@ x = base_model(x, training=False)
 
 # --- GeM Pooling thay cho GAP ---
 x = GeMPooling(p=3.0, trainable_p=True)(x)
-# ---------------------------------
 
 x = layers.Dropout(0.5)(x)
 x = layers.Dense(
@@ -168,9 +159,9 @@ x = layers.Dense(
 outputs = layers.UnitNormalization(axis=1)(x)
 model = tf.keras.Model(inputs, outputs)
 
-# ==========================================
+
 # 6. HUẤN LUYỆN 2 GIAI ĐOẠN
-# ==========================================
+
 
 # --- GIAI ĐOẠN 1: WARM-UP ---
 print("\n[PHASE 1] WARM-UP: Đóng băng EfficientNet, học Dense + GeM")
@@ -211,9 +202,8 @@ history = model.fit(
 model.save("/kaggle/working/vietnamese_food_extractor_fixed.keras")
 print("\n--- HOÀN TẤT ---")
 
-# ==========================================
 # 7. VẼ BIỂU ĐỒ
-# ==========================================
+
 plt.figure(figsize=(10, 6))
 plt.plot(range(1, len(history.history['loss'])+1), history.history['loss'], label='Train Loss')
 plt.plot(range(1, len(history.history['val_loss'])+1), history.history['val_loss'], label='Val Loss')
