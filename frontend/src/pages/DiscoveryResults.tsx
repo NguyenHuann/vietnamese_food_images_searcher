@@ -22,7 +22,7 @@ export default function DiscoveryResults() {
   const hasMore = visibleCount < results.length;
 
   const top1Score = results.length > 0 ? results[0].similarity : 0;
-  const isMatchFound = top1Score >= 0.70;
+  const isMatchFound = top1Score >= 0.60;
 
   return (
     <div className="space-y-12">
