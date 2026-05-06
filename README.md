@@ -19,8 +19,8 @@ npm run dev
 ```
 
 1. Download [dataset](https://kaggle.com/datasets/7798c74aaa30de6318880ec6e21732aa7ff88d3c97d7fd59a626e6ff30b71fea)
-2. Run `vector_v4.py` to extract and save the vectors (có rồi thì bỏ qua)
-3. Run `app_v4.py` to start the API
+2. Run `models/feature_extractor.py` to extract and save the vectors (có rồi thì bỏ qua)
+3. Run `main.py` to start the API
 4. Open http://localhost:3000 with your browser
 
 
