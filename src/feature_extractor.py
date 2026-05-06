@@ -48,7 +48,7 @@ class GeMPooling(layers.Layer):
 # Đảm bảo trỏ đúng tên file .keras mà bạn vừa lưu ở bước trước
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_FILE = "../models/vietnamese_food_feature_extractor.keras"
-DATASET_DIR = os.path.join(BASE_DIR, "dataset")
+DATASET_DIR = "../dataset"
 
 # 3. TẢI MÔ HÌNH
 print("1. Đang tải mô hình AI với lớp GeMPooling...")
