@@ -19,9 +19,10 @@ npm run dev
 ```
 
 1. Download [dataset](https://kaggle.com/datasets/7798c74aaa30de6318880ec6e21732aa7ff88d3c97d7fd59a626e6ff30b71fea)
-2. Run `models/feature_extractor.py` to extract and save the vectors (có rồi thì bỏ qua)
-3. Run `main.py` to start the API
-4. Open http://localhost:3000 with your browser
+2. Run `git lfs install` và `git lfs pull` để tải về mô hình
+3. Run `feature_manager.py`để đồng bộ và bổ sung vector khi có ảnh mới thêm vào dataset (có thể bỏ qua)
+4. Run `main.py` to start the API
+5. Open http://localhost:3000 with your browser
 
 
 
