@@ -191,3 +191,5 @@ if __name__ == "__main__":
     db.sync_dataset(DATASET_DIR)
     # Xem thống kê
     db.info()
+    # thêm ảnh bằng hàm db.add_image
+    # xóa ảnh bằng hàm db.delete_image
