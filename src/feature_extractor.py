@@ -1,3 +1,4 @@
+import argparse
 import os
 import pickle
 import numpy as np
@@ -44,11 +45,19 @@ class GeMPooling(layers.Layer):
         return config
 
 
-# 2. CẤU HÌNH ĐƯỜNG DẪN
-# Đảm bảo trỏ đúng tên file .keras mà bạn vừa lưu ở bước trước
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_FILE = "../models/vietnamese_food_feature_extractor.keras"
-DATASET_DIR = "../dataset"
+# 2. CẤU HÌNH ĐƯỜNG DẪN TỪ TERMINAL (ARGPARSE)
+parser = argparse.ArgumentParser(description="Trích xuất vector đặc trưng từ tập ảnh đồ ăn.")
+parser.add_argument("--input", type=str, default="../dataset", help="Đường dẫn tới thư mục dataset")
+parser.add_argument("--output", type=str, default="../models", help="Thư mục lưu kết quả .pkl")
+args = parser.parse_args()
+
+DATASET_DIR = args.input
+OUTPUT_DIR = args.output
+MODEL_FILE = os.path.join(OUTPUT_DIR, "vietnamese_food_feature_extractor.keras")
+
+# Tự động tạo thư mục đầu ra nếu chưa có
+if not os.path.exists(OUTPUT_DIR):
+    os.makedirs(OUTPUT_DIR)
 
 # 3. TẢI MÔ HÌNH
 print("1. Đang tải mô hình AI với lớp GeMPooling...")
@@ -93,10 +102,14 @@ for root, _, files in os.walk(DATASET_DIR):
 
 # 5. LƯU KẾT QUẢ XUỐNG Ổ CỨNG
 print("3. Đang đóng gói dữ liệu...")
-with open("../models/vectors.pkl", "wb") as f:
+vectors_save_path = os.path.join(OUTPUT_DIR, "vectors.pkl")
+paths_save_path = os.path.join(OUTPUT_DIR, "paths.pkl")
+
+with open(vectors_save_path, "wb") as f:
     pickle.dump(np.array(vectors), f)
 
-with open("../models/paths.pkl", "wb") as f:
+with open(paths_save_path, "wb") as f:
     pickle.dump(paths, f)
 
-print(f"\n[THÀNH CÔNG] Đã chuyển đổi {len(vectors)} bức ảnh thành các vector 512 chiều.")
+print(f"\n[THÀNH CÔNG] Đã chuyển đổi {len(vectors)} bức ảnh.")
+print(f"Dữ liệu đã được lưu tại thư mục: {OUTPUT_DIR}")
