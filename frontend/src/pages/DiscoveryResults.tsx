@@ -22,7 +22,7 @@ export default function DiscoveryResults() {
   const hasMore = visibleCount < results.length;
 
   const top1Score = results.length > 0 ? results[0].similarity : 0;
-  const isMatchFound = top1Score >= 0.60;
+  const isMatchFound = top1Score >= 0.70;
 
   return (
     <div className="space-y-12">
@@ -114,8 +114,8 @@ export default function DiscoveryResults() {
                     className="group"
                   >
                     <Link to="/detail" state={detailState} className="block space-y-6 text-center">
-                      <div className={`relative aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-surface-container-low shadow-xl group-hover:shadow-2xl transition-all duration-700
-                        ${isMatchFound && item.is_correct === true ? 'ring-8 ring-green-500 ring-inset' : isMatchFound && item.is_correct === false ? 'ring-8 ring-red-500 ring-inset' : 'border border-outline/10'}
+                      <div className={`relative aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-surface-container-low shadow-xl group-hover:shadow-2xl transition-all duration-700 border-[8px]
+                        ${isMatchFound && item.is_correct === true ? 'border-green-500' : isMatchFound && item.is_correct === false ? 'border-red-500' : 'border-transparent'}
                       `}>
                         <img 
                           src={getImageUrl(item.image_url)} 

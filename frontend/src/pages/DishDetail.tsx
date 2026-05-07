@@ -45,8 +45,19 @@ export default function DishDetail() {
 
       {/* Hero */}
       <section className="relative group">
-        <div className="w-full h-[350px] md:h-[600px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden relative shadow-2xl">
-          <img src={imageFullUrl} alt={dish_name} className="w-full h-full object-cover transition-transform duration-[20s] ease-linear group-hover:scale-110" />
+        <div className="w-full h-[350px] md:h-[600px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden relative shadow-2xl bg-surface-container-highest">
+          {/* Ảnh nền mờ để tạo chiều sâu */}
+          <img 
+            src={imageFullUrl} 
+            alt="" 
+            className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-110" 
+          />
+          {/* Ảnh chính hiển thị trọn vẹn */}
+          <img 
+            src={imageFullUrl} 
+            alt={dish_name} 
+            className="relative w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]" 
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
           <div className="absolute bottom-6 left-6 right-6 md:bottom-12 md:left-12 md:right-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 md:gap-8">
             <div className="space-y-2 md:space-y-4">
@@ -196,8 +207,8 @@ export default function DishDetail() {
               <div className="space-y-4">
                 {similarDishes.map((dish, i) => (
                   <Link key={`${dish.image_url}-${i}`} to="/detail" state={{ dish_name: dish.dish_name, similarity: dish.similarity, image_url: dish.image_url, allResults }} className="flex items-center gap-4 p-3 rounded-2xl hover:bg-white/80 transition-all group">
-                    <div className={`w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 shadow-sm
-                      ${dish.is_correct === true ? 'ring-2 ring-green-500 ring-inset' : dish.is_correct === false ? 'ring-2 ring-red-500 ring-inset' : ''}
+                    <div className={`w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 shadow-sm border-2
+                      ${dish.is_correct === true ? 'border-green-500' : dish.is_correct === false ? 'border-red-500' : 'border-transparent'}
                     `}>
                       <img src={getImageUrl(dish.image_url)} alt={dish.dish_name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
                     </div>
