@@ -51,7 +51,7 @@ class GeMPooling(layers.Layer):
 
 
 # 2. CẤU HÌNH FLASK & ĐƯỜNG DẪN
-app = Flask(__name__, static_folder="frontend")
+app = Flask(__name__)
 CORS(app)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -207,5 +207,5 @@ def search():
 
 
 if __name__ == "__main__":
-    print("Server đang chạy tại: http://localhost:5000")
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    print("Server đang chạy tại: http://localhost:7860")
+    app.run(host="0.0.0.0", port=7860)
