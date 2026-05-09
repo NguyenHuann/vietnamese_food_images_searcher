@@ -5,9 +5,9 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image as keras_image
 from tensorflow.keras import layers
-from tqdm import tqdm  # Import thanh tiến trình
+from tqdm import tqdm
 
-# 1. ĐỊNH NGHĨA LỚP GeM POOLING (CẦN THIẾT ĐỂ LOAD MODEL)
+# 1. ĐỊNH NGHĨA LỚP GeM POOLING
 @tf.keras.utils.register_keras_serializable()
 class GeMPooling(layers.Layer):
     def __init__(self, p=3.0, eps=1e-6, trainable_p=True, **kwargs):
@@ -119,11 +119,6 @@ class VectorDatabaseManager:
         print("=" * 30 + "\n")
 
     def sync_dataset(self, dataset_dir):
-        """
-        Quét toàn bộ thư mục dataset, tự động tìm và trích xuất vector
-        cho những ảnh MỚI chưa từng có trong Database.
-        """
-
         print(f"\nĐang quét thư mục: {dataset_dir} ...")
 
         # BƯỚC 1: Tối ưu hóa thuật toán tìm kiếm bằng Set (O(1) lookup)

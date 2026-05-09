@@ -8,7 +8,7 @@ from tensorflow.keras.preprocessing import image as keras_image
 from tensorflow.keras import layers
 from tqdm import tqdm
 
-# 1. ĐỊNH NGHĨA LỚP GeM POOLING (BẮT BUỘC PHẢI CÓ ĐỂ ĐỌC FILE)
+# 1. ĐỊNH NGHĨA LỚP GeM POOLING
 
 @tf.keras.utils.register_keras_serializable()
 class GeMPooling(layers.Layer):
