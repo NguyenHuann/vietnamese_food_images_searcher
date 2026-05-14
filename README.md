@@ -14,6 +14,7 @@ cd frontend
 # 2. Cài đặt các package phụ thuộc
 npm install
 npm install react-webcam
+npm install react-easy-crop
 
 # 3. Khởi chạy Frontend server
 npm run dev
