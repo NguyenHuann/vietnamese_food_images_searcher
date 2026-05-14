@@ -8,7 +8,7 @@
 
 Ứng dụng web tích hợp Trí tuệ nhân tạo (AI) giúp người dùng nhận diện và tìm kiếm các món ăn truyền thống của Việt Nam thông qua hình ảnh tải lên hoặc chụp trực tiếp từ camera.
 
-🔗 **[Trải nghiệm trực tiếp ứng dụng tại đây (Live Demo)](https://vnfood-searcher.vercel.app)**
+🔗 **[Trải nghiệm trực tiếp ứng dụng tại đây (Live Demo)](https://vnfood-search.vercel.app)**
 
 ---
 
