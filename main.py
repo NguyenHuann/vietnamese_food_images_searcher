@@ -113,11 +113,11 @@ def search():
     if "file" not in request.files:
         return jsonify({"error": "Không tìm thấy file"}), 400
 
-    k_param = request.form.get("k", 5)
+    k_param = request.form.get("k", 50)
     try:
         K = int(k_param)
     except ValueError:
-        K = 5
+        K = 50
 
     file = request.files["file"]
     img_bytes = file.read()
